@@ -1,5 +1,7 @@
 package com.multinancyUsers.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +35,9 @@ public class UserEntityService {
 	private void createSchema(String schemaName) {
 		String sql = "CREATE SCHEMA IF NOT EXISTS " + schemaName;
 		entityManager.createNativeQuery(sql).executeUpdate();
+	}
+	
+	public List<UserEntity> getAllUsers(){
+		return userRepo.findAll();
 	}
 }
